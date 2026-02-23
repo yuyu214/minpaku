@@ -1,0 +1,15 @@
+<!-- app/views/facilities/show.html.erb -->
+<h1><%= @facility.name %></h1>
+
+<% if @facility.image.attached? %>
+  <%= image_tag @facility.image, width: 400 %>
+<% else %>
+  <%= image_tag "facility/default-image.png", width: 400 %>
+<% end %>
+
+
+<p><%= @facility.description %></p>
+<p>料金：¥<%= @facility.price %> / 日</p>
+
+<%= link_to "戻る", request.referer || facilities_path %>
+

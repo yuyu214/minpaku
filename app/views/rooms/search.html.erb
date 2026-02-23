@@ -1,0 +1,94 @@
+<!-- ===== ヒーローエリア ===== -->
+<div class="hero"
+     style="background-image: url('/hero.jpg');">
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-inner">
+    <h1 class="hero-title">日本で理想の宿を見つけよう</h1>
+    <p class="hero-sub">Discover unique stays across Japan</p>
+
+    <div class="search-bar">
+      <%= form_with url: search_rooms_path, method: :get, local: true, class: "search-form" do %>
+
+        <%= select_tag :area,
+  options_for_select(["東京", "大阪", "京都", "札幌"], params[:area]),
+  include_blank: "エリア選択",
+  class: "search-select" %>
+
+        <%= text_field_tag :keyword,
+          params[:keyword],
+          placeholder: "キーワード",
+          class: "search-input" %>
+
+        <%= submit_tag "検索", class: "search-btn" %>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 検索結果 ===== -->
+<div class="container">
+  <p class="result-count">検索結果：<%= @rooms.count %>件</p>
+
+  <div class="room-list">
+    <% @rooms.each do |room| %>
+      <% facility = room.facility %>
+
+      <div class="room-card">
+        <div class="room-image">
+
+          <% if facility.image.attached? %>
+            <%= image_tag facility.image, class: "room-img" %>
+          <% else %>
+            <%= image_tag "default-image.jpg", class: "room-img" %>
+          <% end %>
+
+          <% if user_signed_in? %>
+  <% if current_user.favorite_rooms.include?(room) %>
+    <%= button_to room_favorite_path(room),
+          method: :delete,
+          class: "favorite-btn liked" do %>
+     ★
+    <% end %>
+  <% else %>
+    <%= button_to room_favorite_path(room),
+          method: :post,
+          class: "favorite-btn" do %>
+      ☆
+    <% end %>
+  <% end %>
+<% end %>
+
+
+        </div>
+
+        <div class="room-info">
+          <h3 class="room-title">
+            <%= link_to room.name, room_path(room) %>
+          </h3>
+
+          <p class="room-area">
+            📍 <%= facility.address %>
+          </p>
+
+          <p class="room-desc">
+            <%= truncate(room.description, length: 80) %>
+          </p>
+
+          <p class="room-price">
+            ¥<%= number_with_delimiter(room.price) %>
+            <span>/ 泊</span>
+          </p>
+
+          <%= link_to "詳細を見る",
+              room_path(room),
+              class: "room-btn" %>
+
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>

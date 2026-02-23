@@ -1,0 +1,42 @@
+<div class="page-center">
+  <div class="facility-form-wrapper">
+
+    <h1 class="form-title">施設編集</h1>
+
+    <%= form_with model: @room, local: true, class: "facility-form" do |f| %>
+
+      <div class="form-group">
+        <%= f.label :name, "施設名" %>
+        <%= f.text_field :name, class: "form-input" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :description, "説明" %>
+        <%= f.text_area :description, rows: 4, class: "form-input" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :price, "料金（円）" %>
+        <%= f.number_field :price, class: "form-input" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :image, "施設画像" %>
+        <%= f.file_field :image, class: "form-input" %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.submit "更新する", class: "submit-btn" %>
+      </div>
+
+    <% end %>
+
+    <div class="delete-area">
+      <%= link_to "この施設を削除する",
+                  room_path(@room),
+                  data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+                  class: "delete-btn" %>
+    </div>
+
+  </div>
+</div>

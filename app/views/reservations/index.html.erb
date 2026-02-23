@@ -1,0 +1,55 @@
+<div class="reservation-wrapper">
+
+  <h2 class="page-title">予約一覧</h2>
+
+  <div class="reservation-list">
+    <% @reservations.each do |reservation| %>
+      <% facility = reservation.room.facility %>
+    <div class="reservation-card">
+
+      <!-- 左：画像 -->
+      <div class="reservation-image">
+        <% if facility.image.attached? %>
+          <%= image_tag facility.image, class: "reservation-img" %>
+        <% else %>
+          <%= image_tag "default-image.jpg", class: "reservation-img" %>
+        <% end %>
+      </div>
+
+      <!-- 右：情報 -->
+      <div class="reservation-info">
+        <h3 class="reservation-title">
+          <%= link_to reservation.room.name, room_path(reservation.room) %>
+        </h3>
+
+        <p class="reservation-desc">
+          <%= reservation.room.description %>
+        </p>
+
+        <p class="reservation-date">
+          🗓 <%= reservation.check_in.strftime("%Y/%m/%d") %> 〜 
+          <%= reservation.check_out.strftime("%Y/%m/%d") %>
+        </p>
+
+        <p class="reservation-people">
+          👤 人数：<%= reservation.people %> 人
+        </p>
+
+        <p class="reservation-price">
+          合計料金：¥<%= number_with_delimiter(reservation.total_price) %>
+        </p>
+
+        <p class="reserved-at">
+          予約確定日時：<%= l reservation.created_at, format: :short %>
+        </p>
+      <%= button_to "予約をキャンセル",
+      reservation_path(reservation),
+      method: :delete,
+      data: { turbo_confirm: "本当にキャンセルしますか？" },
+      class: "cancel-btn" %>
+
+        </div>
+
+    </div>
+  <% end %>
+</div>

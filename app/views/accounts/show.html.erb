@@ -1,0 +1,19 @@
+<div class="account-container">
+  <h1 class="account-title">アカウント情報</h1>
+
+  <div class="account-card">
+    <div class="account-row">
+      <span class="label">メールアドレス</span>
+      <span class="value"><%= @user.email %></span>
+    </div>
+
+    <div class="account-row">
+      <span class="label">パスワード</span>
+      <span class="value">********</span>
+    </div>
+
+    <div class="account-action">
+      <%= link_to "パスワードを変更", edit_user_registration_path, class: "account-button" %>
+    </div>
+  </div>
+</div>

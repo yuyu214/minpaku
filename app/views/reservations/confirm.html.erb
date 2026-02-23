@@ -1,0 +1,52 @@
+<div class="confirm-container">
+
+  <h1 class="confirm-title">予約確認</h1>
+
+  <div class="confirm-card">
+
+    <div class="confirm-row">
+      <span>施設名</span>
+      <strong><%= @room.name %></strong>
+    </div>
+
+    <div class="confirm-row">
+      <span>チェックイン</span>
+      <strong><%= @reservation.check_in.strftime("%Y/%m/%d") %></strong>
+    </div>
+
+    <div class="confirm-row">
+      <span>チェックアウト</span>
+      <strong><%= @reservation.check_out.strftime("%Y/%m/%d") %></strong>
+    </div>
+
+    <div class="confirm-row">
+      <span>人数</span>
+      <strong><%= @reservation.people %> 人</strong>
+    </div>
+
+    <div class="confirm-row">
+      <span>宿泊日数</span>
+      <strong><%= @reservation.stay_days %> 日</strong>
+    </div>
+
+    <hr>
+
+    <div class="confirm-total">
+      <span>支払い金額</span>
+      <strong>¥<%= number_with_delimiter(@reservation.total_price) %></strong>
+    </div>
+
+    <%= form_with model: @reservation, url: reservations_path, local: true, data: { turbo: false } do |f| %>
+      <%= f.hidden_field :room_id, value: @reservation.room_id %>
+      <%= f.hidden_field :check_in, value: @reservation.check_in %>
+      <%= f.hidden_field :check_out, value: @reservation.check_out %>
+      <%= f.hidden_field :people, value: @reservation.people %>
+
+      <%= f.submit "予約を確定する", class: "confirm-btn" %>
+    <% end %>
+
+    <%= link_to "← 内容を修正する", room_path(@room), class: "back-link" %>
+
+  </div>
+
+</div>

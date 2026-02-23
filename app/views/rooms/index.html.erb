@@ -1,0 +1,11 @@
+<h1>施設一覧</h1>
+
+<% @rooms.each do |room| %>
+  <div>
+    <h2><%= link_to room.name, room_path(room) %></h2>
+    <p><%= room.description %></p>
+    <p>住所: <%= room.address %></p>
+    <p>料金: ¥<%= room.price %> / 日</p>
+  </div>
+  <hr>
+<% end %>

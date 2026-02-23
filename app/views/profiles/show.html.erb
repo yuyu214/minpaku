@@ -1,0 +1,23 @@
+<h2 class="page-title">プロフィール</h2>
+
+<div class="profile-card">
+
+  <div class="profile-avatar">
+    <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar, class: "profile-avatar-img" %>
+    <% else %>
+      <%= image_tag "default-avatar.png", class: "profile-avatar-img" %>
+    <% end %>
+  </div>
+
+  <div class="profile-info">
+    <h3 class="profile-name"><%= @user.name %></h3>
+
+    <p class="profile-intro">
+      <%= @user.introduction.presence || "自己紹介はまだ登録されていません。" %>
+    </p>
+
+    <%= link_to "プロフィールを編集", edit_profile_path, class: "profile-edit-btn" %>
+  </div>
+
+</div>

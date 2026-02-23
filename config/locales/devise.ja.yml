@@ -1,0 +1,50 @@
+ja:
+  devise:
+    confirmations:
+      confirmed: "メールアドレスの確認が完了しました。"
+      send_instructions: "メールアドレス確認の案内を送信しました。"
+      send_paranoid_instructions: "メールアドレスが存在する場合、確認案内を送信しました。"
+    failure:
+      already_authenticated: "すでにログインしています。"
+      inactive: "アカウントが有効化されていません。"
+      invalid: "メールアドレスまたはパスワードが違います。"
+      locked: "アカウントがロックされています。"
+      last_attempt: "あと1回でアカウントがロックされます。"
+      not_found_in_database: "メールアドレスまたはパスワードが違います。"
+      timeout: "セッションの有効期限が切れました。再度ログインしてください。"
+      unauthenticated: "ログインしてください。"
+      unconfirmed: "メールアドレスの確認が必要です。"
+    mailer:
+      confirmation_instructions:
+        subject: "メールアドレス確認の案内"
+      reset_password_instructions:
+        subject: "パスワード再設定の案内"
+      unlock_instructions:
+        subject: "ロック解除の案内"
+      email_changed:
+        subject: "メールアドレスが変更されました"
+      password_change:
+        subject: "パスワードが変更されました"
+    passwords:
+      no_token: "パスワード再設定メールからアクセスしてください。"
+      send_instructions: "パスワード再設定の案内を送信しました。"
+      send_paranoid_instructions: "メールアドレスが存在する場合、パスワード再設定の案内を送信しました。"
+      updated: "パスワードを変更しました。ログインしました。"
+      updated_not_active: "パスワードを変更しました。"
+    registrations:
+      destroyed: "アカウントを削除しました。またのご利用をお待ちしています。"
+      signed_up: "アカウント登録が完了しました。"
+      signed_up_but_inactive: "アカウント登録は完了しましたが、ログインできません。"
+      signed_up_but_locked: "アカウント登録は完了しましたが、ロックされています。"
+      signed_up_but_unconfirmed: "確認メールを送信しました。メールのリンクから登録を完了してください。"
+      update_needs_confirmation: "メールアドレスを変更しました。確認メールを送信しました。"
+      updated: "アカウントを更新しました。"
+      updated_but_not_signed_in: "パスワードを変更したため、再ログインが必要です。"
+    sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+      already_signed_out: "ログアウトしました。"
+    unlocks:
+      send_instructions: "ロック解除の案内を送信しました。"
+      send_paranoid_instructions: "アカウントが存在する場合、ロック解除の案内を送信しました。"
+      unlocked: "アカウントのロックを解除しました。ログインしてください。"

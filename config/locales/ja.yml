@@ -1,0 +1,18 @@
+ja:
+  hello: "こんにちは"
+
+  time:
+    formats:
+      short: "%Y/%m/%d %H:%M"
+
+  errors:
+    messages:
+      not_saved: "保存できませんでした。"
+      taken: "はすでに使用されています"
+      confirmation: "と確認用の入力が一致しません"
+
+  activerecord:
+    errors:
+      messages:
+        taken: "はすでに使用されています"
+        confirmation: "と確認用の入力が一致しません"

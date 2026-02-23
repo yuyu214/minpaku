@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>StayApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+      <div class="header-left">
+        <%= link_to root_path do %>
+          <%= image_tag "logo.png", alt: "ホーム", class: "home-icon" %>
+        <% end %>
+      </div>
+
+      <div class="header-right">
+        <% if user_signed_in? %>
+
+          <div class="user-menu">
+            <button class="avatar" id="avatarBtn">
+              <% if current_user&.avatar&.attached? %>
+                <%= image_tag url_for(current_user.avatar), class: "avatar-img" %>
+              <% else %>
+                <%= image_tag "default-avatar.png", class: "avatar-img" %>
+              <% end %>
+            </button>
+
+            <div class="dropdown-menu" id="dropdownMenu">
+              <%= link_to "予約済み一覧", reservations_path %>
+              <%= link_to "お気に入り一覧", favorites_path %>
+              <%= link_to "施設の新規登録", new_facility_path %>
+              <%= link_to "登録済み一覧", facilities_path %>
+              <%= link_to "プロフィール設定", profile_path %>
+              <%= link_to "アカウント設定", account_path %>
+              <hr>
+              <%= button_to "ログアウト", destroy_user_session_path, method: :delete, data: { turbo: false }, class: "logout-btn" %>
+            </div>
+          </div>
+
+        <% else %>
+          <%= link_to "ログイン", new_user_session_path, class: "header-link" %>
+          <%= link_to "新規登録", new_user_registration_path, class: "header-btn" %>
+        <% end %>
+      </div>
+    </header>
+
+    <%= yield %>
+
+  </body>
+</html>

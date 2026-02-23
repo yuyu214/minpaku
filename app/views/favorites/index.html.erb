@@ -1,0 +1,59 @@
+<h2 class="page-title">お気に入り一覧</h2>
+
+<div class="room-list">
+  <% @favorite_rooms.each do |room| %>
+    <% facility = room.facility %>
+
+    <div class="room-card">
+      <div class="room-image">
+
+        <% if facility.image.attached? %>
+          <%= image_tag facility.image, class: "room-img" %>
+        <% else %>
+          <%= image_tag "default-image.jpg", class: "room-img" %>
+        <% end %>
+
+        <% if user_signed_in? %>
+          <% if current_user.favorite_rooms.include?(room) %>
+            <%= button_to room_favorite_path(room),
+                  method: :delete,
+                  class: "favorite-btn liked" do %>
+              ★
+            <% end %>
+          <% else %>
+            <%= button_to room_favorite_path(room),
+                  method: :post,
+                  class: "favorite-btn" do %>
+              ☆
+            <% end %>
+          <% end %>
+        <% end %>
+
+      </div>
+
+      <div class="room-info">
+        <h3 class="room-title">
+          <%= link_to room.name, room_path(room) %>
+        </h3>
+
+        <p class="room-area">
+          📍 <%= facility.address %>
+        </p>
+
+        <p class="room-desc">
+          <%= truncate(room.description, length: 80) %>
+        </p>
+
+        <p class="room-price">
+          ¥<%= number_with_delimiter(room.price) %>
+          <span>/ 泊</span>
+        </p>
+
+        <%= link_to "詳細を見る",
+              room_path(room),
+              class: "room-btn" %>
+      </div>
+    </div>
+
+  <% end %>
+</div>

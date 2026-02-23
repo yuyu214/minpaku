@@ -1,0 +1,51 @@
+<h2 class="page-title">登録済み施設一覧</h2>
+
+<div class="facility-list">
+  <% @facilities.each do |facility| %>
+    <div class="facility-card">
+
+      <!-- 左：画像 -->
+      <div class="facility-image">
+        <% if facility.image.attached? %>
+          <%= image_tag facility.image, class: "facility-img" %>
+        <% else %>
+          <%= image_tag "default-image.jpg", class: "facility-img" %>
+        <% end %>
+      </div>
+
+      <!-- 右：情報 -->
+      <div class="facility-info">
+        <h3 class="facility-title">
+          <%= link_to facility.name, facility_path(facility) %>
+        </h3>
+
+        <p class="facility-address">
+          📍 <%= facility.address %>
+        </p>
+
+        <p class="facility-desc">
+          <%= truncate(facility.description, length: 80) %>
+        </p>
+
+        <p class="facility-price">
+          ¥<%= number_with_delimiter(facility.price) %> <span>/ 日</span>
+        </p>
+
+        <p class="facility-date">
+          作成日：<%= facility.created_at.strftime("%Y/%m/%d") %>
+        </p>
+
+        <!-- アクション -->
+        <div class="facility-actions">
+          <%= link_to "編集", edit_facility_path(facility), class: "edit-btn" %>
+
+          <%= link_to "削除",
+                      facility_path(facility),
+                      data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+                      class: "delete-btn" %>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
+</div>
