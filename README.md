@@ -64,9 +64,9 @@ Minpakuは、民泊施設を検索・予約できるWebアプリケーション�
 
 ## ■ ER図
 
-（ここにER図画像を配置）
-例：
-![ER図](app/assets/images/er_diagram.png)
+## ■ ER図
+
+![ER図](docs/er_diagram.png)
 
 ---
 
