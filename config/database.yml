@@ -19,5 +19,5 @@ test:
   host: localhost
 
 production:
-  <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV["DATABASE_URL"] %>
+  pool: 5
