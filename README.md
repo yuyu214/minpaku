@@ -1,281 +1,171 @@
 # Minpaku - 民泊予約アプリ
 
-![アプリトップ](docs/top.png)
+民泊施設を検索・予約できるWebアプリケーションです。
+ユーザーは施設を検索し、お気に入り登録や予約を行うことができます。
 
 ---
 
-## ■ アプリ概要
+# アプリ概要
 
-Minpakuは、民泊施設を検索・予約できるWebアプリケーションです。
-ユーザーはエリア検索を行い、施設詳細を確認し、予約までをアプリ内で完結できます。
-
-Railsを用いたWebアプリケーション開発の実践として、
-
-* ユーザー認証
-* CRUD処理
-* 検索機能
-* モデル関連付け
-* 予約処理
-
-など、実務でよく利用される機能を実装しています。
+民泊施設を簡単に検索・予約できるサービスです。
+ユーザーは施設の検索・詳細確認・予約をアプリ内で行うことができます。
 
 ---
 
-## ■ 開発背景
+# URL
 
-近年、旅行需要の増加に伴い民泊サービスを利用する機会が増えています。
-
-しかし、施設を探す際に
-
-* 希望エリアの施設が見つけにくい
-* 施設情報を確認してから予約するまでの手順が分かりづらい
-
-といった課題があると感じました。
-
-そこで、ユーザーが **シンプルな操作で施設検索から予約まで行えるサービス** を想定し、本アプリを開発しました。
-
-### 対象ユーザー
-
-民泊施設を利用したい旅行者
-
-### 解決したい課題
-
-* エリア検索のしづらさ
-* 予約までの手順の煩雑さ
-
-### 解決方法
-
-* エリア検索による施設の絞り込み
-* 施設詳細ページで情報と画像を確認
-* 予約機能によりアプリ内で予約完結
+（デプロイしたURLをここに記載）
 
 ---
 
-## ■ アプリURL
+# テスト用アカウント
 
-https://minpaku.onrender.com
+メールアドレス
+[test@example.com](mailto:test@example.com)
 
----
-
-## ■ 使用技術
-
-| 技術         | 内容     |
-| ---------- | ------ |
-| Ruby       | 3.x    |
-| Rails      | 7      |
-| PostgreSQL | データベース |
-| Devise     | 認証     |
-| Bootstrap  | UI     |
-| Render     | デプロイ   |
+パスワード
+password
 
 ---
 
-## ■ 機能一覧
-
-### ユーザー機能
-
-* 新規登録
-* ログイン / ログアウト
-* ゲストログイン
-* マイページ
-* 予約履歴確認
-
-### 施設機能
-
-* 施設一覧表示
-* エリア検索
-* 施設詳細
-* 施設登録
-* 施設編集
-* 画像アップロード
-
-### 予約機能
-
-* 予約作成
-* 予約確認
-* 予約キャンセル
-
-### その他
-
-* お気に入り機能
-
----
-
-# ■ 機能デモ
-
-### ログイン機能
-
-![ログイン](docs/login.gif)
-
----
-
-### 施設検索
-
-エリア名から施設を検索できます。
-
-![検索](docs/facility_search.gif)
-
----
-
-### 施設登録
-
-施設情報と画像を登録できます。
-
-![施設登録](docs/facility_register.gif)
-
----
-
-### お気に入り機能
-
-施設をお気に入り登録できます。
-
-![お気に入り](docs/favorite.gif)
-
----
-
-### 予約機能
-
-施設予約をアプリ内で完結できます。
-
-![予約](docs/reservation.gif)
-
----
-
-# ■ システム構成
+# 使用技術
 
 ### フロントエンド
 
 * HTML
 * CSS
-* Bootstrap
+* JavaScript
 
 ### バックエンド
 
-* Ruby on Rails
+* Ruby 3.x
+* Ruby on Rails 7.x
 
 ### データベース
 
-* PostgreSQL
+* MySQL
+
+### 認証
+
+* Devise
+
+### その他
+
+* Git / GitHub
 
 ---
 
-# ■ データベース設計
+# 機能一覧
 
-| テーブル         | 説明   |
-| ------------ | ---- |
-| users        | ユーザー |
-| facilities   | 施設   |
-| rooms        | 部屋   |
-| reservations | 予約   |
+* ユーザー登録
+* ログイン機能
+* 施設検索
+* 施設登録
+* お気に入り登録
+* 予約機能
+
+---
+
+# 機能デモ
+
+### ログイン機能
+
+ユーザーがログインしてサービスを利用できます。
+
+![ログイン操作](docs/login.gif)
+
+---
+
+### 施設検索機能
+
+エリア名などの条件を入力して施設を検索できます。
+
+![施設検索操作](docs/facility_search.gif)
+
+---
+
+### 施設登録機能
+
+施設名・住所・画像などを入力して施設を登録できます。
+
+![施設登録操作](docs/facility_register.gif)
+
+---
+
+### お気に入り機能
+
+気に入った施設をお気に入り登録できます。
+
+![お気に入り操作](docs/favorite.gif)
+
+---
+
+### 予約機能
+
+施設の予約をアプリ内で完結できます。
+
+![予約操作](docs/reservation.gif)
+
+---
+
+# データベース設計
+
+### ER図
+
+![ER図](docs/er_diagram.png)
+
+---
+
+### テーブル概要
+
+| テーブル         | 説明     |
+| ------------ | ------ |
+| users        | ユーザー情報 |
+| facilities   | 施設情報   |
+| rooms        | 部屋情報   |
+| reservations | 予約情報   |
+| favorites    | お気に入り  |
+
+---
 
 ### モデル関連
 
 User
-has_many :reservations
+
+* has_many :reservations
+* has_many :favorites
 
 Facility
-has_many :rooms
+
+* has_many :rooms
 
 Room
-belongs_to :facility
-has_many :reservations
+
+* belongs_to :facility
+* has_many :reservations
 
 Reservation
-belongs_to :user
-belongs_to :room
+
+* belongs_to :user
+* belongs_to :room
+
+Favorite
+
+* belongs_to :user
+* belongs_to :facility
 
 ---
 
-# ■ 検索機能の実装
+# 今後の改善予定
 
-施設検索では **roomsテーブルとfacilitiesテーブルをJOIN** して検索しています。
-
-```ruby
-Room.joins(:facility)
-```
-
-エリア検索は部分一致で実装しています。
-
-```ruby
-where("facilities.address LIKE ?", "%#{params[:area]}%")
-```
+* 決済機能（Stripe）
+* 口コミ投稿機能
+* 画像アップロード機能の強化
+* UI/UX改善
 
 ---
 
-# ■ パフォーマンス対策
+# 作成者
 
-一覧表示では `includes` を使用して **N+1問題を回避**しています。
-
-```ruby
-Room.includes(:facility)
-```
-
----
-
-# ■ ディレクトリ構成
-
-```
-minpaku
- ├ app
- │ ├ controllers
- │ ├ models
- │ ├ views
- │
- ├ config
- ├ db
- ├ public
- ├ docs
- │ ├ login.gif
- │ ├ facility_search.gif
- │ ├ facility_register.gif
- │ ├ favorite.gif
- │ └ reservation.gif
- │
- └ README.md
-```
-
----
-
-# ■ 工夫した点
-
-* JOINを利用した検索機能
-* Deviseを用いた認証
-* モデル関連付けを意識したDB設計
-* シンプルなUI
-
----
-
-# ■ 苦労した点
-
-* 施設 / 部屋 / 予約の関連設計
-* 予約確認画面のパラメータ受け渡し
-* バリデーション設計
-
----
-
-# ■ 今後の改善
-
-* 管理者機能
-* レビュー機能
-* Stripe決済
-* AWS環境移行
-* 検索条件追加
-
----
-
-# ■ ローカル起動
-
-```
-git clone https://github.com/yuyu214/minpaku.git
-cd minpaku
-bundle install
-rails db:create
-rails db:migrate
-rails s
-```
-
-アクセス
-
-```
-http://localhost:3000
-```
+GitHub
+https://github.com/yuyu214
