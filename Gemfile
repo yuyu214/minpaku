@@ -28,7 +28,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # 認証・セキュリティ
-gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.22"
 
 # タイムゾーン対応（Windows用）
 gem "tzinfo-data", platforms: %i[windows jruby]
