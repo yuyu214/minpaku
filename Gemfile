@@ -4,7 +4,7 @@ source "https://rubygems.org"
 gem 'devise'
 
 # Rails 本体
-gem "rails", "~> 7.2.2", ">= 7.2.2.1"
+gem "rails", "~> 8.1.2"
 gem "sprockets-rails"
 
 # データベース
