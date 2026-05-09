@@ -6,17 +6,17 @@ class RoomsController < ApplicationController
     @rooms = Room.includes(:facility).all
   end
 
-  def search
-    @rooms = Room.joins(:facility)
+  ddef search
+  @rooms = Room.left_joins(:facility)
 
-    if params[:area].present?
-      @rooms = @rooms.where("facilities.address LIKE ?", "%#{params[:area]}%")
-    end
+  if params[:area].present?
+    @rooms = @rooms.where("facilities.address LIKE ?", "%#{params[:area]}%")
+  end
 
-    if params[:keyword].present?
-      keyword = "%#{params[:keyword]}%"
-      @rooms = @rooms.where("facilities.address LIKE ?", keyword)
-    end
+  if params[:keyword].present?
+    keyword = "%#{params[:keyword]}%"
+    @rooms = @rooms.where("facilities.address LIKE ?", keyword)
+  end
   end
 
   def show
